@@ -50,39 +50,41 @@ function playRound(playerSelection, computerChoice) {
   let winner = calculateWinner(player, computer);
 
   switch (winner) {
-    case 0: return [winner, "It's a tie!"];
-    case 1: return [winner, `You Win! ${player} beats ${computer}`];
-    case -1: return [winner, `You Lose! ${computer} beats ${player}`];
+    case 0: updateDraw(); break;
+    case 1: updateWinner(); break;
+    case -1: updateComputer(); break;
   }
 }
 
-function playRock() {
-  let [score, result] = playRound("Rock", getComputerChoice());
-  console.log(result);
-}
-
-function playPaper() {
-  let [score, result] = playRound("Paper", getComputerChoice());
-  console.log(result);
-}
-
-function playScissors() {
-  let [score, result] = playRound("Scissors", getComputerChoice());
-  console.log(result);
-}
-
-function checkGame(score) {
+function updateWinner() {
+  playerScore += 1;
   
+  let ps = document.querySelector("#player");
+  ps.textContent = `Player: ${playerScore}`;
+}
+
+function updateComputer() {
+  computerScore += 1;
+  
+  let cs = document.querySelector("#computer");
+  cs.textContent = `Computer: ${computerScore}`;
+}
+
+function updateDraw() {
+  draws += 1;
+  
+  let ds = document.querySelector("#draws");
+  ds.textContent = `Draws: ${draws}`;
 }
 
 const rock = document.querySelector("#Rock");
-rock.addEventListener('click', playRock);
+rock.addEventListener('click', () => playRound("Rock", getComputerChoice()));
 
 const paper = document.querySelector("#Paper");
-paper.addEventListener('click', playPaper);
+paper.addEventListener('click', () => playRound("Paper", getComputerChoice()));
 
 const scissors = document.querySelector("#Scissors");
-scissors.addEventListener('click', playScissors);
+scissors.addEventListener('click', () => playRound("Scissors", getComputerChoice()));
 
 playerScore = 0;
 computerScore = 0;

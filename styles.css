@@ -1,9 +1,15 @@
-#Buttons {
+#Buttons, 
+#Score {
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 }
 
-button {
+button,
+p {
 	margin: 8px;
+}
+
+p {
+	text-align: center;
 }
