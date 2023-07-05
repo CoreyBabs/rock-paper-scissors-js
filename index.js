@@ -56,25 +56,58 @@ function playRound(playerSelection, computerChoice) {
   }
 }
 
-function game() {
-  let total_score = 0;
-  for (let i = 0; i < 5; i++) {
-    let playerChoice = prompt("Rock Paper Scissors");
-    let [score, result] = playRound(playerChoice, getComputerChoice())
-    total_score += score;
-    console.log(result);    
-  }
-
-  if (total_score === 0) {
-    console.log("It's a Tie!");
-  }
-  else if (total_score > 0) {
-    console.log("You Win!");
-  }
-  else {
-    console.log("Computer Wins!");
-  }
+function playRock() {
+  let [score, result] = playRound("Rock", getComputerChoice());
+  console.log(result);
 }
 
-game();
+function playPaper() {
+  let [score, result] = playRound("Paper", getComputerChoice());
+  console.log(result);
+}
 
+function playScissors() {
+  let [score, result] = playRound("Scissors", getComputerChoice());
+  console.log(result);
+}
+
+function checkGame(score) {
+  
+}
+
+const rock = document.querySelector("#Rock");
+rock.addEventListener('click', playRock);
+
+const paper = document.querySelector("#Paper");
+paper.addEventListener('click', playPaper);
+
+const scissors = document.querySelector("#Scissors");
+scissors.addEventListener('click', playScissors);
+
+playerScore = 0;
+computerScore = 0;
+draws = 0;
+
+
+// function game() {
+//   let total_score = 0;
+//   for (let i = 0; i < 5; i++) {
+//     let playerChoice = prompt("Rock Paper Scissors");
+//     let [score, result] = playRound(playerChoice, getComputerChoice())
+//     total_score += score;
+//     console.log(result);    
+//   }
+//
+//   if (total_score === 0) {
+//     console.log("It's a Tie!");
+//   }
+//   else if (total_score > 0) {
+//     console.log("You Win!");
+//   }
+//   else {
+//     console.log("Computer Wins!");
+//   }
+// }
+//
+// game();
+//
