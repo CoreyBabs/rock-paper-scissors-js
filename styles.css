@@ -1,0 +1,9 @@
+#Buttons {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+button {
+	margin: 8px;
+}
