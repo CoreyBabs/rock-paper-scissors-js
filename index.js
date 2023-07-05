@@ -61,6 +61,10 @@ function updateWinner() {
   
   let ps = document.querySelector("#player");
   ps.textContent = `Player: ${playerScore}`;
+
+  if (playerScore === 5) {
+    displayWinner("You Win!");
+  }
 }
 
 function updateComputer() {
@@ -68,6 +72,10 @@ function updateComputer() {
   
   let cs = document.querySelector("#computer");
   cs.textContent = `Computer: ${computerScore}`;
+
+  if (computerScore === 5) {
+    displayWinner("Computer Wins!")
+  }
 }
 
 function updateDraw() {
@@ -77,14 +85,35 @@ function updateDraw() {
   ds.textContent = `Draws: ${draws}`;
 }
 
-const rock = document.querySelector("#Rock");
-rock.addEventListener('click', () => playRound("Rock", getComputerChoice()));
+function displayWinner(winner) {
+  let body = document.querySelector("body");
+  let finalScore = document.createElement("h3");
+  finalScore.textContent = winner;
 
-const paper = document.querySelector("#Paper");
-paper.addEventListener('click', () => playRound("Paper", getComputerChoice()));
+  body.appendChild(finalScore);
 
-const scissors = document.querySelector("#Scissors");
-scissors.addEventListener('click', () => playRound("Scissors", getComputerChoice()));
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach((button) => {
+    button.removeEventListener('click', buttonClick);
+  });
+}
+
+function buttonClick(e) {
+  playRound(e.srcElement.textContent, getComputerChoice());
+}
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+  button.addEventListener('click', buttonClick);
+});
+// const rock = document.querySelector("#Rock");
+// rock.addEventListener('click', () => playRound("Rock", getComputerChoice()));
+//
+// const paper = document.querySelector("#Paper");
+// paper.addEventListener('click', () => playRound("Paper", getComputerChoice()));
+//
+// const scissors = document.querySelector("#Scissors");
+// scissors.addEventListener('click', () => playRound("Scissors", getComputerChoice()));
 
 playerScore = 0;
 computerScore = 0;

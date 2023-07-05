@@ -6,10 +6,12 @@
 }
 
 button,
-p {
+p,
+h3 {
 	margin: 8px;
 }
 
-p {
+p,
+h3 {
 	text-align: center;
 }
