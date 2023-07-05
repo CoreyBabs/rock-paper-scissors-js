@@ -92,21 +92,64 @@ function displayWinner(winner) {
 
   body.appendChild(finalScore);
 
+  // game is over so disable buttons
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button) => {
     button.removeEventListener('click', buttonClick);
   });
+
+  let rdiv = document.createElement("div");
+  rdiv.setAttribute("id", "restart");
+
+  let restart = document.createElement("button");
+  restart.textContent = "Restart";
+  restart.addEventListener('click', resetGame);
+
+  rdiv.appendChild(restart);
+  body.appendChild(rdiv);
+  
+}
+
+function resetGame() {
+  // set scores to -1, update calls will add 1 to zero them out
+  // should be refactored to allow for proper resetting here
+  draws = -1;
+  playerScore = -1;
+  computerScore = -1;
+
+  // update score text
+  updateDraw();
+  updateWinner();
+  updateComputer();
+  
+  // reactivate buttons
+  subscribeButtons();
+
+  let body = document.querySelector("body");
+
+  // remove winner text
+  let winner = document.querySelector("h3");
+  body.removeChild(winner);
+
+  // remove restart button
+  let restart = document.querySelector("#restart");
+  body.removeChild(restart);
 }
 
 function buttonClick(e) {
   playRound(e.srcElement.textContent, getComputerChoice());
 }
-const buttons = document.querySelectorAll("button");
 
-buttons.forEach((button) => {
-  button.addEventListener('click', buttonClick);
-});
+function subscribeButtons() {
+  const buttons = document.querySelectorAll("button");
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', buttonClick);
+  });
+}
 
 playerScore = 0;
 computerScore = 0;
 draws = 0;
+
+subscribeButtons();
