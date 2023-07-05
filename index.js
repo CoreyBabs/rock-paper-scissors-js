@@ -106,39 +106,7 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener('click', buttonClick);
 });
-// const rock = document.querySelector("#Rock");
-// rock.addEventListener('click', () => playRound("Rock", getComputerChoice()));
-//
-// const paper = document.querySelector("#Paper");
-// paper.addEventListener('click', () => playRound("Paper", getComputerChoice()));
-//
-// const scissors = document.querySelector("#Scissors");
-// scissors.addEventListener('click', () => playRound("Scissors", getComputerChoice()));
 
 playerScore = 0;
 computerScore = 0;
 draws = 0;
-
-
-// function game() {
-//   let total_score = 0;
-//   for (let i = 0; i < 5; i++) {
-//     let playerChoice = prompt("Rock Paper Scissors");
-//     let [score, result] = playRound(playerChoice, getComputerChoice())
-//     total_score += score;
-//     console.log(result);    
-//   }
-//
-//   if (total_score === 0) {
-//     console.log("It's a Tie!");
-//   }
-//   else if (total_score > 0) {
-//     console.log("You Win!");
-//   }
-//   else {
-//     console.log("Computer Wins!");
-//   }
-// }
-//
-// game();
-//
